@@ -1,0 +1,24 @@
+id: subdomain-takeover-generic
+
+info:
+  name: Subdomain Takeover Detection
+  author: GhosT
+  severity: high
+  description: Detects potential subdomain takeover by matching known service error messages
+  tags: takeover,dns,misconfiguration
+
+dns:
+  - name: "{{FQDN}}"
+    type: CNAME
+
+    matchers-condition: or
+    matchers:
+      - type: word
+        words:
+          - "NoSuchBucket"
+          - "There isn't a GitHub Pages site here"
+          - "The specified bucket does not exist"
+          - "Repository not found"
+          - "Heroku | No such app"
+          - "Fastly error: unknown domain"
+          - "The requested URL was not found on this server"
