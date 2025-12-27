@@ -1,0 +1,19 @@
+id: xss-reflected
+
+info:
+  name: Reflected XSS Detection
+  author: GhosT
+  severity: high
+  description: Detects reflected XSS by payload reflection
+  tags: xss,reflected
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}?q=<script>alert(1)</script>"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<script>alert(1)</script>"
