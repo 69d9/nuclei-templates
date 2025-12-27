@@ -1,0 +1,19 @@
+id: xss-json
+
+info:
+  name: JSON API XSS Detection
+  author: GhosT
+  severity: medium
+  description: Detects reflected XSS in JSON responses
+  tags: xss,json,api
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/search?q=<svg/onload=alert(1)>"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<svg/onload=alert(1)>"
