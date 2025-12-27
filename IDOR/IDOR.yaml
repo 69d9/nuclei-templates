@@ -1,0 +1,27 @@
+id: idor-numeric-clean
+
+info:
+  name: IDOR Numeric Parameter Detection
+  author: GhosT
+  severity: high
+  description: Detects possible IDOR by changing numeric object references
+  tags: idor,access-control
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}?id=1"
+      - "{{BaseURL}}?id=2"
+
+    matchers-condition: and
+    matchers:
+      - type: status
+        status:
+          - 200
+
+      - type: word
+        part: body
+        words:
+          - "email"
+          - "username"
+        condition: or
