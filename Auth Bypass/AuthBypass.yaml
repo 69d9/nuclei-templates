@@ -1,0 +1,20 @@
+id: auth-bypass-missing-auth
+
+info:
+  name: Missing Authentication Detection
+  author: GhosT
+  severity: high
+  description: Detects endpoints accessible without authentication
+  tags: auth-bypass,access-control
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/admin"
+      - "{{BaseURL}}/admin"
+      - "{{BaseURL}}/dashboard"
+
+    matchers:
+      - type: status
+        status:
+          - 200
