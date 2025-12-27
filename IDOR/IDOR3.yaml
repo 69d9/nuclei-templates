@@ -1,0 +1,18 @@
+id: idor-uuid-clean
+
+info:
+  name: IDOR UUID Parameter Detection
+  author: GhosT
+  severity: high
+  description: Detects IDOR using predictable UUID access
+  tags: idor,uuid
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/orders/11111111-1111-1111-1111-111111111111"
+
+    matchers:
+      - type: status
+        status:
+          - 200
