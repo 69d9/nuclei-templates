@@ -1,0 +1,20 @@
+id: auth-bypass-forced-browsing
+
+info:
+  name: Forced Browsing Auth Bypass
+  author: GhosT
+  severity: high
+  description: Detects restricted pages accessible directly
+  tags: auth-bypass,forced-browsing
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/admin/config"
+      - "{{BaseURL}}/admin/users"
+      - "{{BaseURL}}/manage"
+
+    matchers:
+      - type: status
+        status:
+          - 200
