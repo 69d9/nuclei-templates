@@ -1,0 +1,18 @@
+id: auth-bypass-http-method
+
+info:
+  name: HTTP Method Auth Bypass
+  author: GhosT
+  severity: high
+  description: Detects authentication bypass via HTTP method change
+  tags: auth-bypass,http-method
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/admin"
+
+    matchers:
+      - type: status
+        status:
+          - 200
