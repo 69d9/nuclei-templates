@@ -1,0 +1,22 @@
+id: xss-header
+
+info:
+  name: Header Based XSS Detection
+  author: GhosT
+  severity: medium
+  description: Detects XSS via HTTP headers
+  tags: xss,headers
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    headers:
+      User-Agent: "<script>alert(1)</script>"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "<script>alert(1)</script>"
