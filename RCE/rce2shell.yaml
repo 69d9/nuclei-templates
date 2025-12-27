@@ -1,0 +1,25 @@
+id: react-dev-server-exposed
+
+info:
+  name: Exposed React / Webpack / Vite Development Server
+  author: GhosT
+  severity: high
+  description: Detects exposed React, Webpack, or Vite development server endpoints
+  tags: react,nodejs,webpack,vite,devserver,misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/sockjs-node/info"
+      - "{{BaseURL}}/__webpack_dev_server__"
+      - "{{BaseURL}}/@vite/client"
+
+    matchers-condition: or
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "webpack"
+          - "sockjs"
+          - "vite"
+          - "HMR"
