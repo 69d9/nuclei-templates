@@ -1,0 +1,19 @@
+id: takeover-github-pages
+
+info:
+  name: GitHub Pages Subdomain Takeover
+  author: GhosT
+  severity: high
+  description: Detects GitHub Pages subdomain takeover via unclaimed repository
+  tags: takeover,github,dns
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "There isn't a GitHub Pages site here."
