@@ -1,0 +1,19 @@
+id: idor-profile-clean
+
+info:
+  name: IDOR Profile Access Detection
+  author: GhosT
+  severity: high
+  description: Detects unauthorized access to other user profiles
+  tags: idor,broken-access
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/profile/1"
+      - "{{BaseURL}}/api/profile/2"
+
+    matchers:
+      - type: status
+        status:
+          - 200
