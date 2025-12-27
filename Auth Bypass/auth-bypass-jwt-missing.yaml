@@ -1,0 +1,19 @@
+id: auth-bypass-jwt-missing
+
+info:
+  name: JWT Missing Auth Bypass
+  author: GhosT
+  severity: high
+  description: Detects endpoints that allow access without JWT
+  tags: auth-bypass,jwt
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/user"
+      - "{{BaseURL}}/api/profile"
+
+    matchers:
+      - type: status
+        status:
+          - 200
