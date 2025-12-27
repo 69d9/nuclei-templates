@@ -1,0 +1,22 @@
+id: auth-bypass-header-trust
+
+info:
+  name: Header Trust Auth Bypass
+  author: GhosT
+  severity: high
+  description: Detects auth bypass via trusted headers
+  tags: auth-bypass,headers
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/admin"
+
+    headers:
+      X-Forwarded-For: 127.0.0.1
+      X-Real-IP: 127.0.0.1
+
+    matchers:
+      - type: status
+        status:
+          - 200
