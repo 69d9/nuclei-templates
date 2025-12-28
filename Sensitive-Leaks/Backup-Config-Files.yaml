@@ -1,0 +1,20 @@
+id: backup-files-exposed
+
+info:
+  name: Backup or Config File Disclosure
+  author: GhosT
+  severity: high
+  description: Detects exposed backup or configuration files
+  tags: exposure,backup
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/config.php.bak"
+      - "{{BaseURL}}/config.php~"
+      - "{{BaseURL}}/backup.zip"
+
+    matchers:
+      - type: status
+        status:
+          - 200
