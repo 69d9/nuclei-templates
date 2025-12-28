@@ -39,30 +39,12 @@ Continuously expandable
 
 This repository contains custom Nuclei templates and can be used directly with ProjectDiscovery Nuclei.
 
+## Usage
+
 ### Clone the repository
 ```bash
 git clone https://github.com/69d9/nuclei-templates.git
+bash
+
 cd nuclei-templates
 
-```bash
-nuclei -u https://example.com -t .
-
----
-```bash
-nuclei -u https://example.com -t XSS/
-nuclei -u https://example.com -t SQLi/
-nuclei -u https://example.com -t IDOR/
-nuclei -u https://example.com -t Auth/
-nuclei -u https://example.com -t LFI/
-nuclei -u https://example.com -t OpenRedirect/
-nuclei -u https://example.com -t Rate/
-nuclei -u https://example.com -t Takeover/
-nuclei -u https://example.com -t Leaks/
-
----
-```bash
-nuclei -l targets.txt -t .
-
----
-```bash
-nuclei -u https://example.com -t . -o results.txt
