@@ -1,0 +1,23 @@
+id: sqli-header-based-clean
+
+info:
+  name: SQL Injection via Headers
+  author: GhosT
+  severity: high
+  description: Detects SQLi in HTTP headers
+  tags: sqli,headers
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    headers:
+      User-Agent: "' OR '1'='1"
+
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "SQL"
+          - "syntax"
