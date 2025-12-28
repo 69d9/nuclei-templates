@@ -1,0 +1,18 @@
+id: sqli-time-based-clean
+
+info:
+  name: SQL Injection Time Based Detection
+  author: GhosT
+  severity: critical
+  description: Detects blind SQL injection using time delay
+  tags: sqli,time-based
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}?id=1 AND SLEEP(5)"
+
+    matchers:
+      - type: dsl
+        dsl:
+          - "duration >= 5"
