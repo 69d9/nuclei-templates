@@ -1,0 +1,24 @@
+id: sensitive-info-keywords
+
+info:
+  name: Sensitive Information Disclosure
+  author: GhosT
+  severity: medium
+  description: Detects sensitive keywords exposed in HTTP responses
+  tags: exposure,sensitive
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "api_key"
+          - "apikey"
+          - "secret"
+          - "password"
+          - "token"
+          - "authorization"
