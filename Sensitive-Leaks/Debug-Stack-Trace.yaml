@@ -1,0 +1,22 @@
+id: debug-info-leak
+
+info:
+  name: Debug Information Disclosure
+  author: GhosT
+  severity: medium
+  description: Detects exposed debug or stack trace information
+  tags: exposure,debug
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "stack trace"
+          - "exception"
+          - "Traceback"
+          - "Undefined index"
