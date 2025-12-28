@@ -44,10 +44,11 @@ This repository contains custom Nuclei templates and can be used directly with P
 git clone https://github.com/69d9/nuclei-templates.git
 cd nuclei-templates
 
+```bash
 nuclei -u https://example.com -t .
 
 ---
-
+```bash
 nuclei -u https://example.com -t XSS/
 nuclei -u https://example.com -t SQLi/
 nuclei -u https://example.com -t IDOR/
@@ -59,9 +60,9 @@ nuclei -u https://example.com -t Takeover/
 nuclei -u https://example.com -t Leaks/
 
 ---
-
+```bash
 nuclei -l targets.txt -t .
 
 ---
-
+```bash
 nuclei -u https://example.com -t . -o results.txt
