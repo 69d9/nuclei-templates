@@ -1,0 +1,21 @@
+id: env-file-exposed
+
+info:
+  name: Exposed .env File
+  author: GhosT
+  severity: critical
+  description: Detects exposed environment configuration files
+  tags: exposure,env
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.env"
+
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "APP_KEY"
+          - "DB_PASSWORD"
+          - "DB_USERNAME"
