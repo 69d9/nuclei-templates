@@ -1,0 +1,22 @@
+id: rate-limit-header-bypass
+
+info:
+  name: Rate Limit Header Bypass Detection
+  author: GhosT
+  severity: high
+  description: Detects rate limit bypass via IP headers
+  tags: rate-limit,bypass
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+
+    headers:
+      X-Forwarded-For: "{{rand_ip}}"
+      X-Real-IP: "{{rand_ip}}"
+
+    matchers:
+      - type: status
+        status:
+          - 200
