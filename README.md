@@ -3,15 +3,23 @@ A curated collection of custom Nuclei templates designed for bug bounty hunters,
 
 These templates focus on real-world vulnerabilities with practical detection logic, organized by vulnerability category for easy usage and scalability.
 
-Auth/            → Authentication & authorization issues
-IDOR/            → Insecure Direct Object Reference
-LFI/             → Local File Inclusion
-Leaks/           → Sensitive information disclosure
-OpenRedirect/    → Open redirect vulnerabilities
-Rate/            → Rate limiting & brute-force issues
-SQLi/            → SQL Injection vulnerabilities
-Takeover/        → Subdomain takeover checks
-XSS/             → Reflected & stored XSS
+Auth/ → Authentication & authorization issues
+
+IDOR/ → Insecure Direct Object Reference (IDOR)
+
+LFI/ → Local File Inclusion
+
+Leaks/ → Sensitive information disclosure
+
+OpenRedirect/ → Open redirect vulnerabilities
+
+Rate/ → Rate limiting & brute-force issues
+
+SQLi/ → SQL Injection vulnerabilities
+
+Takeover/ → Subdomain takeover checks
+
+XSS/ → Reflected, stored, and DOM-based XSS
 
 
 # 🎯 Goals of This Repository
