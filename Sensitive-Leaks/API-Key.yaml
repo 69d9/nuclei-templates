@@ -1,0 +1,21 @@
+id: api-key-leak
+
+info:
+  name: API Key Disclosure
+  author: GhosT
+  severity: high
+  description: Detects exposed API keys in responses
+  tags: exposure,api-key
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "AKIA[0-9A-Z]{16}"
+          - "AIza[0-9A-Za-z\\-_]{35}"
+          - "sk_live_[0-9a-zA-Z]{24}"
