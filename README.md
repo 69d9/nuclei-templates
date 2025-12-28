@@ -65,9 +65,3 @@ nuclei -l targets.txt -t .
 ---
 
 nuclei -u https://example.com -t . -o results.txt
-
----
-```bash
-git add README.md
-git commit -m "Add detailed usage instructions"
-git push
