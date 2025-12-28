@@ -1,0 +1,18 @@
+id: rate-limit-api-missing
+
+info:
+  name: API Rate Limit Missing
+  author: GhosT
+  severity: medium
+  description: Detects API endpoints without rate limiting
+  tags: rate-limit,api
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/api/v1/users"
+
+    matchers:
+      - type: status
+        status:
+          - 200
