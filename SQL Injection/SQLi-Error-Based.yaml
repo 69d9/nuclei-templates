@@ -1,0 +1,23 @@
+id: sqli-error-based-clean
+
+info:
+  name: SQL Injection Error Based Detection
+  author: GhosT
+  severity: high
+  description: Detects SQL injection via database error messages
+  tags: sqli,error-based
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}?id=1'"
+
+    matchers:
+      - type: regex
+        part: body
+        regex:
+          - "SQL syntax"
+          - "mysql_fetch"
+          - "ORA-"
+          - "ODBC"
+          - "SQLite"
