@@ -48,5 +48,5 @@ bash
 
 cd nuclei-templates
 
-nuclei -u https://example.com -t 
+
 
