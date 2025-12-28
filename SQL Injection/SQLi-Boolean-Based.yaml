@@ -1,0 +1,19 @@
+id: sqli-boolean-based-clean
+
+info:
+  name: SQL Injection Boolean Based Detection
+  author: GhosT
+  severity: high
+  description: Detects SQLi via boolean condition difference
+  tags: sqli,boolean
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}?id=1 AND 1=1"
+      - "{{BaseURL}}?id=1 AND 1=2"
+
+    matchers:
+      - type: status
+        status:
+          - 200
