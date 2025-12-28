@@ -1,0 +1,24 @@
+id: rate-limit-otp-missing
+
+info:
+  name: OTP Rate Limit Missing
+  author: GhosT
+  severity: high
+  description: Detects OTP endpoints without rate limiting
+  tags: rate-limit,otp
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/api/send-otp"
+
+    body: |
+      phone=123456789
+
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+
+    matchers:
+      - type: status
+        status:
+          - 200
