@@ -1,0 +1,26 @@
+id: rate-limit-missing-basic
+
+info:
+  name: Missing Rate Limit Detection
+  author: GhosT
+  severity: medium
+  description: Detects endpoints without rate limiting protection
+  tags: rate-limit,bruteforce
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+    attack: pitchfork
+    payloads:
+      n:
+        - "1"
+        - "2"
+        - "3"
+        - "4"
+        - "5"
+
+    matchers:
+      - type: status
+        status:
+          - 200
