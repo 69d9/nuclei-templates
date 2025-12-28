@@ -1,0 +1,26 @@
+id: rate-limit-login-bruteforce
+
+info:
+  name: Login Rate Limit Bypass Detection
+  author: GhosT
+  severity: high
+  description: Detects missing rate limit on login endpoint
+  tags: rate-limit,login
+
+http:
+  - method: POST
+    path:
+      - "{{BaseURL}}/login"
+
+    body: |
+      username=test
+      password={{randstr}}
+
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 401
